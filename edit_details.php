@@ -1,10 +1,11 @@
 <?php
-include "include/connection.php"; // Include your database connection file
+ // database connection file
+include "include/connection.php";
 
-// Check if the user is logged in
+// Checking if the user is logged in
 session_start();
 if (!isset($_SESSION['username'])) {
-    // Redirect to the login page if not logged in
+    // Redirects to the login page ifthe user is not logged in
     header("Location: login.php");
     exit();
 }
@@ -16,11 +17,11 @@ $logged_in_username = $_SESSION['username'];
 $query = "SELECT firstname, lastname, email FROM rexregister WHERE username = '$logged_in_username'";
 $result = mysqli_query($con, $query);
 
-// Check if the query was successful
+// Checking if the  fetch user details query was successful
 if ($result) {
-    // Check if there is a row in the result set
+    // Checking if there is a row in the result set
     if ($row = mysqli_fetch_assoc($result)) {
-        // Display a form for editing the user details
+        //  a form for editing the user details
         echo '<form action="update_details.php" method="POST">
                 <label for="firstname">First Name:</label>
                 <input type="text" name="firstname" value="' . $row['firstname'] . '" required><br>
@@ -37,6 +38,6 @@ if ($result) {
     die(mysqli_error($con));
 }
 
-// Close the database connection
+// Closing the database connection
 mysqli_close($con);
 ?>
