@@ -1,8 +1,7 @@
 <?php
-$success=0;
-$user=0;
 
 if($_SERVER['REQUEST_METHOD']=='POST'){
+	// include database connection
     include "include/connection.php";
     $firstname=$_POST['firstname'];
     $lastname=$_POST['lastname'];
@@ -20,14 +19,12 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     if($result){
         $num=mysqli_num_rows($result);
         if($num>0) {
-            /* echo "User already exists"; */
-            $user=1;
+             echo "User already exists"; 
         } else {
             $sql="insert into rexregister (firstname,lastname,email,password,username) values('$firstname','$lastname','$email','$hashed_password','$username')";
     $result=mysqli_query($con,$sql);
     if($result) {
-      /* echo "Signup successfully"; */
-      $success=1;
+      	 echo "Signup successfully"; 
     } else {
       die(mysqli_error($con));
       }
@@ -53,30 +50,8 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     <title>Login Page</title>
   </head>
   <body>
-  <?php
-if($user){
-  echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-  <strong>Sorry</strong> User already exist.
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>';
-}
-
-?>
-<?php
-if($success){
-  echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-  <strong>Success</strong> You are successfully signed up login <a href="login.php"> Here</a>.
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>';
-}
-
-?>
-
-    <h3 class="display-4 text-center mt-5">Create account</h3>
+<main>
+	    <h3 class="display-4 text-center mt-5">Create account</h3>
     <p class="text-muted text-center">Please enter your account here</p> 
     <div class="container mt-5">
         <form action="index.php" method="POST">
@@ -110,5 +85,8 @@ if($success){
             
         </form> 
     </div>
+	
+</main>
+
   </body>
   </html>
