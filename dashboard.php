@@ -24,14 +24,14 @@ if(!isset($_SESSION['username'])){
         include "include/connection.php"; 
 
 
-                // Fetched the username of the logged-in user
+                // this code fetches the username of the logged-in user
                 $logged_in_username = $_SESSION['username'];
 
-                // Fetched user details from the database for the logged-in user
+                // this code fetches user details from the database for the logged-in user
                 $query = "SELECT firstname, lastname, email FROM rexregister WHERE username = '$logged_in_username'";
                 $result = mysqli_query($con, $query);
 
-                // this codes checks if the query was successful
+                // this codes checks if the fetch user details query was successful
                 if ($result) {
                     // Checking if there is a row in the result set
                     if ($row = mysqli_fetch_assoc($result)) {
