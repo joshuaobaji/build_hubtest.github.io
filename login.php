@@ -5,7 +5,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     $username=$_POST['username'];
     $password=$_POST['password'];
 
-    // Fetch the hashed password from the database based on the entered username
+    //  this code fetchs the hashed password from the database based on the entered username
     $getHashedPasswordQuery = "SELECT password FROM rexregister WHERE username = '$username'";
     $result = mysqli_query($con, $getHashedPasswordQuery);
 
@@ -33,17 +33,16 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css" type="text/css"> 
     <title>Login Page</title>
   </head>
   <body>
-        <h3 class="display-4 text-center mt-5">Login Here</h3>
+    <main>
+                <h3 class="display-4 text-center mt-5">Login Here</h3>
             <div class="container mt-5">
             <form action="login.php" method="POST">
               <div class="form-group">
@@ -58,5 +57,6 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
             </form>
         </div>
             <p class="text-center">You don't have an account? <a href="index.php">Sign up here!</a></p>
-          </body>
+    </main>
+     </body>
 </html>
