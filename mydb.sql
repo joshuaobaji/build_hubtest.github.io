@@ -1,4 +1,5 @@
-CREATE TABLE users (
+-- Creates a table to store user information
+CREATE TABLE rexregister (
     id INT(11) NOT NULL AUTO_INCREMENT,
     first_name VARCHAR(30) NOT NULL,
     last_name VARCHAR(30) NOT NULL,
